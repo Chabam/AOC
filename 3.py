@@ -1,5 +1,4 @@
 from aoc_utils import compute_answer, PuzzleInput
-from itertools import accumulate
 
 
 def part1(puzzle_input: PuzzleInput):
