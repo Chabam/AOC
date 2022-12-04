@@ -1,6 +1,6 @@
 from typing import Dict, Union
 from aoc_utils import compute_answer, PuzzleInput
-from enum import Enum, auto
+from enum import Enum
 
 
 class RPS(Enum):
