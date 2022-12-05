@@ -17,14 +17,11 @@ def part1(rucksacks: PuzzleInput):
 
 
 def part2(rucksacks: PuzzleInput):
-    def get_priority_score(rucksack_group: list[str]) -> int:
-        rucksack_1, rucksack_2, rucksack_3 = [
-            set(rucksack)for rucksack in rucksack_group]
-
+    def get_priority_score(rucksack_1: Set[str], rucksack_2: Set[str], rucksack_3: Set[str]) -> int:
         return sum([ord(common_letter) - (ASCII_a_VAL if ord(common_letter) > (ASCII_a_VAL - 1) else ASCII_A_VAL) for common_letter in rucksack_1 & rucksack_2 & rucksack_3])
 
-    print(sum([get_priority_score([rucksacks.pop(), rucksacks.pop(),
-          rucksacks.pop()]) for _ in range(int(len(rucksacks)/3))]))
+    print(sum([get_priority_score(*rucksack_group) for rucksack_group in zip(*
+          [iter(map(lambda rucksack: set(rucksack), rucksacks))] * 3)]))
 
 
 compute_answer(3, part1, part2)
