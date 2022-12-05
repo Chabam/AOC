@@ -21,7 +21,8 @@ def load_puzzle_input(dayNumber: int, sample: bool = False) -> PuzzleInput:
 
     input_file = open(str(input_file_path), "r")
 
-    puzzle_input = [line.strip() for line in input_file.readlines()]
+    puzzle_input = [line[:-1] if line[-1] ==
+                    "\n" else line for line in input_file.readlines()]
 
     input_file.close()
 
@@ -37,7 +38,8 @@ def compute_answer(dayNumber: int, part1: PartFunc, part2: Optional[PartFunc]):
 
     if not INPUT_PATH.exists():
         INPUT_PATH.mkdir()
-        print(f"Put your puzzle inputs in {str(INPUT_PATH)} as 'X.txt' where 'X' is the day number.")
+        print(
+            f"Put your puzzle inputs in {str(INPUT_PATH)} as 'X.txt' where 'X' is the day number.")
         exit(1)
 
     func_to_call: PartFunc = None
