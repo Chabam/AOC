@@ -9,9 +9,6 @@ def part1(calibration_values: PuzzleInput):
         sum += int("".join([nums[0], nums[-1]]))
     print(sum)
 
-
-
-
 def part2(calibration_values: PuzzleInput):
     sum = 0
     valid_txt_num = {
