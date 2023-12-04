@@ -4,7 +4,7 @@ import operator
 
 def part1(game_configurations: PuzzleInput):
     possible_game_ids = []
-    def picked_cubes_is_possible(picked_cubes: str) -> bool:
+    def picked_cubes_are_possible(picked_cubes: str) -> bool:
         for cube in picked_cubes.split(", "):
             amount, color = cube.split(" ")
             amount = int(amount)
@@ -19,7 +19,7 @@ def part1(game_configurations: PuzzleInput):
 
     for game_configuration in game_configurations:
         game_id, cubes_configurations = game_configuration.split(": ")
-        if all([picked_cubes_is_possible(picked_cubes) for picked_cubes in cubes_configurations.split("; ")]):
+        if all([picked_cubes_are_possible(picked_cubes) for picked_cubes in cubes_configurations.split("; ")]):
             possible_game_ids.append(int(game_id.split(" ")[-1]))
 
     print(sum(possible_game_ids))
